@@ -11,48 +11,41 @@
     <header class="topbar">
       <div>
         <div class="brand">SIMULADOR MAAT</div>
-        <div class="subtitle">Evaluación de proceso</div>
+        <div class="subtitle">Evaluación interactiva de proceso</div>
       </div>
       <div class="progress-wrap hidden" id="progressWrap">
         <div class="progress-text" id="progressText">Caso 1 de 10</div>
-        <div class="progress-track">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
       </div>
     </header>
 
     <main>
-      <!-- PANTALLA INICIO -->
       <section class="screen active" id="startScreen">
         <div class="card hero">
           <div class="eyebrow">CAPACITACIÓN INTERACTIVA</div>
           <h1>Simulador de proceso MAAT</h1>
           <p class="lead">
-            Resuelve situaciones del flujo de trámite como si estuvieras operando el proceso.
-            Tus decisiones determinarán tu calificación final.
+            Resuelve situaciones del flujo de trámite apoyándote en las pantallas reales
+            del material MAAT. Tus decisiones determinarán tu calificación final.
           </p>
 
           <div class="form-grid">
-            <label>
-              Nombre completo
+            <label>Nombre completo
               <input id="nameInput" type="text" placeholder="Ej. Ana López" />
             </label>
-
-            <label>
-              Pandape
+            <label>Pandape
               <input id="pandapeInput" type="text" placeholder="Ej. 123456" />
             </label>
-
-            <label>
-              Región
+            <label>Región
               <input id="regionInput" type="text" placeholder="Ej. 8.3" />
             </label>
           </div>
 
           <div class="rules">
             <div>🎯 10 casos</div>
+            <div>🖥️ Pantallas reales del material</div>
             <div>🏆 Calificación sobre 100</div>
-            <div>🔒 No se puede volver a respuestas anteriores</div>
+            <div>🔒 Sin regresar a respuestas anteriores</div>
           </div>
 
           <button class="primary-btn" id="startBtn">INICIAR EXAMEN</button>
@@ -60,7 +53,6 @@
         </div>
       </section>
 
-      <!-- PANTALLA SIMULADOR -->
       <section class="screen" id="quizScreen">
         <div class="simulator-layout">
           <aside class="side-panel">
@@ -69,12 +61,10 @@
               <strong id="sideName">—</strong>
               <span id="sideRegion">Región —</span>
             </div>
-
             <div class="score-mini">
               <span>Puntaje actual</span>
               <strong id="liveScore">0</strong>
             </div>
-
             <div class="topic-list" id="topicList"></div>
           </aside>
 
@@ -89,48 +79,38 @@
               <h2 id="questionTitle"></h2>
               <p class="scenario" id="questionScenario"></p>
 
-              <div id="mockArea" class="mock-area"></div>
+              <div class="ppt-reference">
+                <div class="ppt-label">PANTALLA DEL MATERIAL MAAT · CLIC PARA AMPLIAR</div>
+                <img id="pptScreen" class="ppt-screen" src="" alt="Pantalla MAAT del PowerPoint" />
+              </div>
 
               <div class="question-text" id="questionText"></div>
               <div class="answers" id="answers"></div>
-
               <div class="feedback hidden" id="feedback"></div>
-
               <button class="primary-btn hidden" id="nextBtn">CONTINUAR</button>
             </div>
           </section>
         </div>
       </section>
 
-      <!-- RESULTADOS -->
       <section class="screen" id="resultScreen">
         <div class="card result-card">
           <div class="eyebrow">RESULTADO FINAL</div>
           <h1 id="resultName">Resultado</h1>
 
           <div class="grade-ring">
-            <div>
-              <span id="finalScore">0</span>
-              <small>/ 100</small>
-            </div>
+            <div><span id="finalScore">0</span><small>/ 100</small></div>
           </div>
 
           <div class="result-status" id="resultStatus"></div>
           <p id="resultMessage"></p>
 
+          <div id="saveStatus" class="save-status">Preparando registro...</div>
+
           <div class="summary-grid">
-            <div>
-              <span>Correctas</span>
-              <strong id="correctCount">0</strong>
-            </div>
-            <div>
-              <span>Incorrectas</span>
-              <strong id="incorrectCount">0</strong>
-            </div>
-            <div>
-              <span>Región</span>
-              <strong id="resultRegion">—</strong>
-            </div>
+            <div><span>Correctas</span><strong id="correctCount">0</strong></div>
+            <div><span>Incorrectas</span><strong id="incorrectCount">0</strong></div>
+            <div><span>Región</span><strong id="resultRegion">—</strong></div>
           </div>
 
           <h3>Desglose por tema</h3>
@@ -147,9 +127,12 @@
       </section>
     </main>
 
-    <footer>
-      Simulador de capacitación · Uso interno
-    </footer>
+    <footer>Simulador de capacitación · Uso interno</footer>
+  </div>
+
+  <div class="image-modal hidden" id="imageModal">
+    <button id="closeModal" class="modal-close" aria-label="Cerrar">×</button>
+    <img id="modalImage" alt="Pantalla MAAT ampliada" />
   </div>
 
   <script src="app.js"></script>

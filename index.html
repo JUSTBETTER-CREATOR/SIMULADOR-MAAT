@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador MAAT | Evaluación de Proceso</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="brand">SIMULADOR MAAT</div>
+        <div class="subtitle">Evaluación de proceso</div>
+      </div>
+      <div class="progress-wrap hidden" id="progressWrap">
+        <div class="progress-text" id="progressText">Caso 1 de 10</div>
+        <div class="progress-track">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- PANTALLA INICIO -->
+      <section class="screen active" id="startScreen">
+        <div class="card hero">
+          <div class="eyebrow">CAPACITACIÓN INTERACTIVA</div>
+          <h1>Simulador de proceso MAAT</h1>
+          <p class="lead">
+            Resuelve situaciones del flujo de trámite como si estuvieras operando el proceso.
+            Tus decisiones determinarán tu calificación final.
+          </p>
+
+          <div class="form-grid">
+            <label>
+              Nombre completo
+              <input id="nameInput" type="text" placeholder="Ej. Ana López" />
+            </label>
+
+            <label>
+              Pandape
+              <input id="pandapeInput" type="text" placeholder="Ej. 123456" />
+            </label>
+
+            <label>
+              Región
+              <input id="regionInput" type="text" placeholder="Ej. 8.3" />
+            </label>
+          </div>
+
+          <div class="rules">
+            <div>🎯 10 casos</div>
+            <div>🏆 Calificación sobre 100</div>
+            <div>🔒 No se puede volver a respuestas anteriores</div>
+          </div>
+
+          <button class="primary-btn" id="startBtn">INICIAR EXAMEN</button>
+          <p class="error-text" id="startError"></p>
+        </div>
+      </section>
+
+      <!-- PANTALLA SIMULADOR -->
+      <section class="screen" id="quizScreen">
+        <div class="simulator-layout">
+          <aside class="side-panel">
+            <div class="status-label">EJECUTIVO</div>
+            <div class="user-box">
+              <strong id="sideName">—</strong>
+              <span id="sideRegion">Región —</span>
+            </div>
+
+            <div class="score-mini">
+              <span>Puntaje actual</span>
+              <strong id="liveScore">0</strong>
+            </div>
+
+            <div class="topic-list" id="topicList"></div>
+          </aside>
+
+          <section class="device">
+            <div class="device-top">
+              <span>MAAT</span>
+              <span class="dot"></span>
+            </div>
+
+            <div class="device-screen">
+              <div class="step-badge" id="stepBadge">PASO</div>
+              <h2 id="questionTitle"></h2>
+              <p class="scenario" id="questionScenario"></p>
+
+              <div id="mockArea" class="mock-area"></div>
+
+              <div class="question-text" id="questionText"></div>
+              <div class="answers" id="answers"></div>
+
+              <div class="feedback hidden" id="feedback"></div>
+
+              <button class="primary-btn hidden" id="nextBtn">CONTINUAR</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- RESULTADOS -->
+      <section class="screen" id="resultScreen">
+        <div class="card result-card">
+          <div class="eyebrow">RESULTADO FINAL</div>
+          <h1 id="resultName">Resultado</h1>
+
+          <div class="grade-ring">
+            <div>
+              <span id="finalScore">0</span>
+              <small>/ 100</small>
+            </div>
+          </div>
+
+          <div class="result-status" id="resultStatus"></div>
+          <p id="resultMessage"></p>
+
+          <div class="summary-grid">
+            <div>
+              <span>Correctas</span>
+              <strong id="correctCount">0</strong>
+            </div>
+            <div>
+              <span>Incorrectas</span>
+              <strong id="incorrectCount">0</strong>
+            </div>
+            <div>
+              <span>Región</span>
+              <strong id="resultRegion">—</strong>
+            </div>
+          </div>
+
+          <h3>Desglose por tema</h3>
+          <div id="breakdown" class="breakdown"></div>
+
+          <h3>Temas a reforzar</h3>
+          <div id="reinforce" class="reinforce"></div>
+
+          <div class="result-actions">
+            <button class="secondary-btn" id="restartBtn">VOLVER A INICIAR</button>
+            <button class="primary-btn" id="downloadBtn">DESCARGAR RESULTADO</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Simulador de capacitación · Uso interno
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
